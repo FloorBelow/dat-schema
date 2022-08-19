@@ -3382,7 +3382,7 @@ type MonsterVarieties {
   _: i32
   _: i32
   _: f32
-  _: i32
+  AilmentThresholdMultiplier: i32
   EPKFile: string
   _: i32
   MonsterConditionalEffectPacksKey: MonsterConditionalEffectPacks
