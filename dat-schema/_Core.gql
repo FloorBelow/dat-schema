@@ -83,7 +83,7 @@ type ActiveSkills {
   AlternateSkillTargetingBehavioursKey: AlternateSkillTargetingBehaviours
   _: bool
   AIFile: string @file(ext: ".ai")
-  _: [rid]
+  VirtualStatContextFlags: [VirtualStatContextFlags]
   _: bool
   _: bool
   _: bool
