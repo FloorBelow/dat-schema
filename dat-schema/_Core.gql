@@ -516,7 +516,7 @@ type AtlasSector {
   SpawnWeight_Values: [i32]
 }
 
-enum Attributes @indexing(first: 1) { 
+enum Attributes @indexing(first: 1) {
   STRENGTH
   DEXTERITY
   INTELLIGENCE
@@ -548,7 +548,7 @@ type BaseItemTypes {
   ItemClassesKey: ItemClasses
   Width: i32
   Height: i32
-  Name: string
+  Name: string @localized
   InheritsFrom: string @files(ext: [".ot", ".otc"])
   DropLevel: i32
   FlavourTextKey: FlavourText
@@ -559,7 +559,7 @@ type BaseItemTypes {
   ModDomain: ModDomains
   SiteVisibility: BaseItemTypeVisibility
   ItemVisualIdentity: ItemVisualIdentity
-  HASH: i32 @unique
+  HASH32: i32 @unique
   VendorRecipe_AchievementItems: [AchievementItems]
   "the inflection identifier used for i18n in related fields"
   Inflection: string
@@ -573,7 +573,7 @@ type BaseItemTypes {
   _: rid
   _: rid
   _: bool
-  _: rid
+  TradeMarketCategory: TradeMarketCategory
 }
 
 enum BaseItemTypeVisibility @indexing(first: 0) {
@@ -840,7 +840,7 @@ type Characters {
   _: i32
   CharacterSize: i32
   IntroSoundFile: string @file(ext: ".ogg")
-  StartWeapon: BaseItemTypes
+  StartWeapons: [BaseItemTypes]
   Gender: string
   TraitDescription: string @localized
   _: rid
@@ -852,6 +852,20 @@ type Characters {
   PassiveTreeImage: string @file(ext: ".dds")
   _: i32
   _: i32
+  TencentVideo: string @file(ext: ".bk2")
+  AttrsAsId: string
+  LoginScreen: string @file(ext: ".ao")
+  PlayerCritter: string
+  PlayerEffect: string
+  AfterImage: string
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: f32
+  _: f32
+  SkillTreeBackground: string
+  _: rid
 }
 
 type CharacterStartQuestState {
@@ -1385,8 +1399,8 @@ type Environments {
   Id: string @unique
   Base_ENVFile: string @file(ext: ".env")
   Corrupted_ENVFile: string @file(ext: ".env")
-  _: i32
-  _: i32
+  _: rid
+  _: rid
   _: [_]
   EnvironmentTransitionsKey: EnvironmentTransitions
   PreloadGroup: PreloadGroups
@@ -1985,9 +1999,6 @@ type HideoutDoodads {
   BaseItemTypesKey: BaseItemTypes @unique
   Variation_AOFiles: [string] @file(ext: ".ao")
   IsNonMasterDoodad: bool
-  _: i32
-  _: i32
-  _: i32
   InheritsFrom: string @files(ext: [".ot", ".otc"])
   _: bool
   IsCraftingBench: bool
@@ -1997,6 +2008,7 @@ type HideoutDoodads {
   Category: HideoutDoodadCategory
   _: i32
   _: bool
+  _: rid
 }
 
 type HideoutDoodadCategory {
@@ -2016,8 +2028,8 @@ type HideoutNPCs {
   Regular_NPCsKeys: [NPCs]
   HideoutDoodadsKey: HideoutDoodads
   NPCMasterKey: i32
-  _: i32
-  _: i32
+  _: rid
+  _: rid
   _: i32
   _: rid
   _: i32
@@ -2110,15 +2122,15 @@ type ItemClassCategories {
 type ItemClasses {
   Id: string @unique
   Name: string
-  _: rid
+  TradeMarketCategory: TradeMarketCategory
   ItemClassCategory: ItemClassCategories
   RemovedIfLeavesArea: bool
-  _: [rid]
-  _: [rid]
+  _: [_]
+  IdentifyAchievements: [AchievementItems]
   AllocateToMapOwner: bool
   AlwaysAllocate: bool
   CanHaveVeiledMods: bool
-  _: i32
+  PickedUpQuest: QuestFlags
   _: i32
   AlwaysShow: bool
   CanBeCorrupted: bool
@@ -2134,6 +2146,9 @@ type ItemClasses {
   _: bool # 3.18
   _: [i32]
   Flags: [ItemClassFlags]
+  _: bool
+  _: bool # 3.19
+  EquipAchievements: AchievementItems
 }
 
 enum ItemClassFlags @indexing(first: 0) { _ }
@@ -2346,6 +2361,13 @@ type LeagueInfo {
   PanelItems: [string]
 }
 
+type LeagueProgressQuestFlags {
+  QuestFlag: QuestFlags
+  CompletionString: ClientStrings
+  Boss: string
+  _: bool
+}
+
 enum LeagueQuestFlags @indexing(first: 0) { _ }
 
 type LeagueStaticRewards {
@@ -2387,11 +2409,11 @@ type MapCompletionAchievements {
 type MapConnections {
   MapPinsKey0: MapPins
   MapPinsKey1: MapPins
-  _: i32
+  _: rid
   RestrictedAreaText: string
-  _: i32
-  _: i32
-  _: i32
+  _: rid
+  _: rid
+  _: rid
   _: [_]
 }
 
@@ -2401,17 +2423,17 @@ type MapCreationInformation {
 }
 
 type MapDeviceRecipes {
-  Id: string @unique
-  BaseItemTypesKeys: [BaseItemTypes]
-  WorldAreasKey: WorldAreas
+  Id: string
+  RecipeItems: [BaseItemTypes]
+  WorldArea: WorldAreas
   MicrotransactionPortalVariation: MicrotransactionPortalVariations
   AreaLevel: i32
+  _: rid
   _: i32
-  _: i32
   _: bool
   _: bool
   _: bool
-  _: [_]
+  OpenAchievemnts: [AchievementItems]
 }
 
 type MapDevices {
@@ -2423,7 +2445,6 @@ type MapDevices {
   _: [i32]
   _: bool
   _: i32
-  _: bool
   _: bool
 }
 
@@ -2851,6 +2872,7 @@ enum ModDomains @indexing(first: 1) {
   UNVEILED
   ELDRITCH_ALTAR
   SENTINEL
+  MEMORY_LINE
 }
 
 type ModEffectStats {
@@ -2869,7 +2891,9 @@ type ModEquivalencies {
   _: bool
 }
 
-enum ModFamily @indexing(first: 0) { _ }
+type ModFamily {
+  Id: string @unique
+}
 
 enum ModGenerationType @indexing(first: 1) {
   PREFIX
@@ -2901,6 +2925,7 @@ enum ModGenerationType @indexing(first: 1) {
   _
   EXARCH_IMPLICIT
   EATER_IMPLICIT
+  _
 }
 
 type Mods {
@@ -2915,7 +2940,7 @@ type Mods {
   Domain: ModDomains
   Name: string
   GenerationType: ModGenerationType
-  CorrectGroup: string
+  Families: [ModFamily]
   Stat1Min: i32
   Stat1Max: i32
   Stat2Min: i32
@@ -3543,6 +3568,9 @@ type NPCAudio {
   _: i32
   _: i32
   _: i32
+  _: rid
+  _: i32
+  _: i32
 }
 
 type NPCConversations {
@@ -3628,7 +3656,7 @@ type NPCs {
   Id: string @unique
   Name: string
   Metadata: string @files(ext: [".ot", ".otc"])
-  _: i32
+  _: rid
   NPCMasterKey: NPCMaster
   ShortName: string
   _: i32
@@ -3664,7 +3692,7 @@ type NPCTalk {
   _: [i32]
   _: [i32]
   Script: string
-  _: i32
+  _: rid
   _: NPCTalkCategory
   QuestKey: Quest
   _: i32
@@ -3772,6 +3800,7 @@ type PassiveSkillMasteryGroups {
   ActiveEffectImage: string
   _: bool
   SoundEffect: SoundEffects
+  MasteryCountStat: Stats
 }
 
 type PassiveSkillMasteryEffects {
@@ -3781,6 +3810,7 @@ type PassiveSkillMasteryEffects {
   Stat1Value: i32
   Stat2Value: i32
   Stat3Value: i32
+  AchievementItem: AchievementItems
 }
 
 type PassiveSkills {
@@ -3894,9 +3924,7 @@ type PassiveTreeExpansionJewels {
   SmallIndices: [i32]
   NotableIndices: [i32]
   SocketIndices: [i32]
-  Art: string
   TotalIndices: i32
-  SoundEffectsKey: SoundEffects
 }
 
 type PassiveTreeExpansionJewelSizes {
@@ -3945,6 +3973,13 @@ type PlayerConditions {
   StatValue: i32
   _: [rid]
   _: bool
+}
+
+type PlayerTradeWhisperFormats {
+  Id: string
+  Whisper: string
+  InStash: bool
+  IsPriced: bool
 }
 
 type PreloadGroups {
@@ -4027,27 +4062,30 @@ type QuestAchievements {
   _: bool
 }
 
-enum QuestFlags @indexing(first: 0) { _ }
+type QuestFlags {
+  Id: string
+  HASH32: i32
+}
 
 type QuestItems {
   Item: BaseItemTypes
+  _: rid
+  _: rid
   _: i32
-  _: i32
-  _: i32
-  _: i32
+  _: rid
   _: [_]
   _: bool
   _: bool
   _: rid
   _: i32
   _: rid
-  _: string
+  Script: string
 }
 
 type QuestRewardOffers {
   Id: string
   QuestKey: Quest
-  QuestState: i32
+  _: rid
   _: i32
   RewardWindowTake: ClientStrings
   _: bool
@@ -4058,7 +4096,7 @@ type QuestRewardOffers {
 type QuestRewards {
   RewardOffer: QuestRewardOffers
   _: i32
-  Character: Characters
+  Characters: [Characters]
   Reward: BaseItemTypes
   RewardLevel: i32
   _: rid
@@ -4102,7 +4140,7 @@ type QuestStates {
 }
 
 type QuestStaticRewards {
-  _: i32
+  _: rid
   _: i32
   StatsKeys: [Stats]
   StatValues: [i32]
@@ -4208,7 +4246,7 @@ type SalvageBoxes {
 }
 
 type SessionQuestFlags {
-  QuestFlag: i32
+  QuestFlag: QuestFlags
 }
 
 type ShieldTypes {
@@ -4432,6 +4470,7 @@ type SoundEffects {
   SoundFile: string @file(ext: ".ogg")
   SoundFile_2D: string @file(ext: ".ogg")
   _: bool
+  _: string
 }
 
 type SpawnAdditionalChestsOrClusters {
@@ -4503,7 +4542,7 @@ type StatDescriptionFunctions {
   TranslationId: string @unique
 }
 
-enum StatInterpolationTypes @indexing(first: 1) { 
+enum StatInterpolationTypes @indexing(first: 1) {
   CONSTANT
   LINEAR
   EXPONENTIAL
@@ -4866,7 +4905,7 @@ type Tutorial {
   IsEnabled: bool
   _: i32
   _: [i32]
-  _: i32
+  _: rid
   _: i32
   _: [i32]
   _: bool
@@ -5051,14 +5090,14 @@ type WorldAreas {
   _: i32
   _: i32
   LoadingScreen_DDSFile: string @file(ext: ".dds")
-  _: i32
-  _: [i32]
+  _: rid
+  _: [rid]
   _: i32
   TopologiesKeys: [Topologies]
   ParentTown_WorldAreasKey: WorldAreas
   _: i32
-  _: i32
-  _: i32
+  _: rid
+  _: rid
   Bosses_MonsterVarietiesKeys: [MonsterVarieties]
   Monsters_MonsterVarietiesKeys: [MonsterVarieties]
   SpawnWeight_TagsKeys: [Tags]
@@ -5114,7 +5153,7 @@ type WorldAreas {
 }
 
 type WorldAreaLeagueChances {
-  Area: WorldAreas
+  Id: string
   _: i32
   _: i32
   _: i32
