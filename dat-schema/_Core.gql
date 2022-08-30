@@ -1217,16 +1217,16 @@ type DefaultMonsterStats {
   Accuracy: i32
   Life: i32
   Experience: i32
-  AllyLife: i32
-  _: i32
-  Difficulty: i32
-  Damage2: f32
-  _: i32
-  _: f32
-  _: f32
-  _: i32
+  MinionLife: i32
   Armour: i32
-  _: i32
+  Difficulty: i32
+  MinionDamage: f32
+  UnkLife1: i32
+  Damage2: f32
+  Damage3: f32
+  UnkLife2: i32
+  UnkEvasion: i32
+  AilmentThreshold: i32
 }
 
 type DeliriumStashTabLayout {
