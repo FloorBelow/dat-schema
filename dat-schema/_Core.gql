@@ -1225,8 +1225,8 @@ type DefaultMonsterStats {
   _: f32
   _: f32
   _: i32
-  _: i32
   Armour: i32
+  _: i32
 }
 
 type DeliriumStashTabLayout {
