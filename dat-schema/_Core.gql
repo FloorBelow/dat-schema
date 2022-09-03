@@ -3421,7 +3421,7 @@ type MonsterVarieties {
   _: i32
   _: i32
   _: i32
-  _: [_]
+  AddonFiles: [string]
   _: i32
   _: i32
 }
