@@ -61,7 +61,7 @@ type ActiveSkills {
   Id: string @unique
   DisplayedName: string
   Description: string
-  _: string
+  AISName: string
   Icon_DDSFile: string @file(ext: ".dds")
   ActiveSkillTargetTypes: [ActiveSkillTargetTypes]
   ActiveSkillTypes: [ActiveSkillType]
