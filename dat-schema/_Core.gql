@@ -1677,8 +1677,8 @@ type GenericLeagueRewardTypes {
 
 type GenericLeagueRewardTypeVisuals {
   Type: GenericLeagueRewardTypes
-  _: rid
-  _: rid
+  MinimapIcon: MinimapIcons
+  MiscAnimated: MiscAnimated
   _: f32
   Icon: string
   Name: string @localized
