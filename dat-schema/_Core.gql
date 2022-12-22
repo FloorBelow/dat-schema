@@ -3395,7 +3395,7 @@ type MonsterVarieties {
   AISFile: string @file(ext: ".ais")
   ModsKeys2: [Mods]
   Stance: string
-  _: rid
+  BloodType: BloodTypes
   Name: string
   "in percent"
   DamageMultiplier: i32
