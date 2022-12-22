@@ -1248,7 +1248,7 @@ type DefaultMonsterStats {
   Damage2: f32
   Damage3: f32
   UnkLife2: i32
-  UnkEvasion: i32
+  EvasiveEvasion: i32
   AilmentThreshold: i32
 }
 
@@ -3378,7 +3378,7 @@ type MonsterVarieties {
   "in percent"
   ModelSizeMultiplier: i32
   _: i32
-  _: i32
+  MonsterBehavior: i32
   _: i32
   _: i32
   _: i32
