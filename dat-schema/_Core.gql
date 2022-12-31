@@ -1718,7 +1718,7 @@ type GeometryAttack {
   _: bool
   _: rid
   _: [i32]
-  _: i32
+  MonsterSkillsWaveDirection: i32
   _: bool
   _: bool
   _: rid
@@ -1798,7 +1798,7 @@ type GeometryTrigger {
   _: i32
   _: i32
   _: bool
-  _: i32
+  MonsterSkillsWaveDirection: i32
   _: bool
   _: i32
   _: i32
@@ -3329,11 +3329,21 @@ enum MonsterSkillsReference @indexing(first: 0) { _ }
 
 enum MonsterSkillsSequenceMode @indexing(first: 0) { _ }
 
-enum MonsterSkillsShape @indexing(first: 0) { _ }
+enum MonsterSkillsShape @indexing(first: 1) { 
+  CIRCLE
+  CONE
+  RECTANGLE
+  DONUT
+}
 
 enum MonsterSkillsTargets @indexing(first: 0) { _ }
 
-enum MonsterSkillsWaveDirection @indexing(first: 0) { _ }
+enum MonsterSkillsWaveDirection @indexing(first: 1) { 
+  FRONTTOBACK
+  BACKTOFRONT
+  RIGHTTOLEFT
+  LEFTTORIGHT
+}
 
 type MonsterSpawnerGroups {
   Id: string @files(ext: [".ot", ".otc"])
