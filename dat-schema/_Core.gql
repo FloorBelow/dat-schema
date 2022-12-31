@@ -1688,7 +1688,7 @@ type GenericLeagueRewardTypeVisuals {
 }
 
 type GeometryAttack {
-  _: i32
+  Id: i32
   MiscAnimated: [MiscAnimated]
   _: [rid]
   _: i32
