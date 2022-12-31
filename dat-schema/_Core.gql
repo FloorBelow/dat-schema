@@ -1816,17 +1816,17 @@ type GeometryTrigger {
   _: rid
   _: bool
   _: bool
-  z: i32
+  _: i32
   CascadeCountUnk: i32
   _: [rid]
   _: [i32]
-  z: i32
+  _: i32
   fUnk: f32
-  z: i32
+  _: i32
   _: bool
-  z: i32
-  z: i32
-  z: i32
+  _: i32
+  _: i32
+  _: i32
 }
 
 type GiftWrapArtVariations {
