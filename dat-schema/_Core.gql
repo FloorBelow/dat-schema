@@ -1692,7 +1692,7 @@ type GeometryAttack {
   MiscAnimated: [MiscAnimated]
   _: [rid]
   _: i32
-  _: i32
+  MonsterSkillsShape: i32
   _: i32
   _: i32
   _: i32
@@ -1784,11 +1784,11 @@ type GeometryTrigger {
   MiscAnimated: MiscAnimated
   _: i32
   _: i32
+  MonsterSkillsShape: i32
   _: i32
   _: i32
   _: i32
-  _: i32
-  _: i32
+  AngleUnk: i32
   _: i32
   _: i32
   _: i32
@@ -1804,7 +1804,7 @@ type GeometryTrigger {
   _: i32
   _: bool
   _: i32
-  _: [rid]
+  MarkerMiscAnimated: [MiscAnimated]
   _: i32
   _: bool
   _: i32
@@ -1816,15 +1816,17 @@ type GeometryTrigger {
   _: rid
   _: bool
   _: bool
-  _: bool
-  _: i32
-  _: i32
+  z: i32
+  CascadeCountUnk: i32
   _: [rid]
   _: [i32]
-  _: i32
-  _: i32
-  _: i32
+  z: i32
+  fUnk: f32
+  z: i32
   _: bool
+  z: i32
+  z: i32
+  z: i32
 }
 
 type GiftWrapArtVariations {
@@ -4079,9 +4081,9 @@ type Projectiles {
 }
 
 type ProjectilesArtVariations {
-  Projectile: string
+  BaseProjectile: string
   Variant: i32
-  _: [_]
+  Projectile: [Projectiles]
   _: i32
   _: rid
 }
