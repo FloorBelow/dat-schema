@@ -128,7 +128,7 @@ type AddBuffToTargetVarieties {
   StatsKeys: [Stats]
   _: i32
   _: [i32]
-  _: i32
+  Variation: i32
   _: i32
   _: [i32]
 }
@@ -1362,7 +1362,7 @@ type EclipseMods {
 
 type EffectDrivenSkill {
   _: i32
-  _: [rid]
+  MiscAnimated: [MiscAnimated]
   _: [_]
   _: i32
   _: i32
@@ -1689,7 +1689,7 @@ type GenericLeagueRewardTypeVisuals {
 
 type GeometryAttack {
   _: i32
-  _: [rid]
+  MiscAnimated: [MiscAnimated]
   _: [rid]
   _: i32
   _: i32
@@ -1755,7 +1755,7 @@ type GeometryChannel {
 
 type GeometryProjectiles {
   _: i32
-  _: rid
+  Projectile: Projectiles
   _: bool
   _: i32
   _: bool
@@ -1774,7 +1774,7 @@ type GeometryProjectiles {
   _: bool
   _: rid
   _: bool
-  _: rid
+  Mortar: MonsterMortar
   _: i32
 }
 
@@ -1894,7 +1894,7 @@ type GrantedEffects {
   _: bool
   SupportWeaponRestrictions: [ItemClasses]
   RegularVariant: GrantedEffects
-  BehaviorIndex: i32
+  Variation: i32
   _: i32
   _: i32
   _: bool
@@ -4405,19 +4405,21 @@ type SigilDisplay {
 
 type SingleGroundLaser {
   Id: i32
-  _: rid
-  _: rid
+  MiscBeam: MiscBeams
+  BeamImpact: MiscAnimated
   _: i32
-  _: string
+  AOCSocket: string
   _: bool
   _: i32
   _: bool
   _: i32
   _: i32
-  _: rid
-  _: rid
+  PulseBeam: MiscBeams
+  PulseImpact: MiscAnimated
   _: i32
   _: bool
+  _: i32
+  _: i32
 }
 
 type SkillArtVariations {
