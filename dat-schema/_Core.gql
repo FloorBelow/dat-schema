@@ -1780,7 +1780,7 @@ type GeometryProjectiles {
 
 type GeometryTrigger {
   Id: i32
-  TriggeredEffect: GrantedEffect
+  TriggeredEffect: GrantedEffects
   MiscAnimated: MiscAnimated
   _: i32
   _: i32
