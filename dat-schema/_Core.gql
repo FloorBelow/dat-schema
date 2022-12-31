@@ -1779,9 +1779,9 @@ type GeometryProjectiles {
 }
 
 type GeometryTrigger {
-  _: i32
-  _: rid
-  _: rid
+  Id: i32
+  TriggeredEffect: GrantedEffect
+  MiscAnimated: MiscAnimated
   _: i32
   _: i32
   _: i32
@@ -1894,7 +1894,7 @@ type GrantedEffects {
   _: bool
   SupportWeaponRestrictions: [ItemClasses]
   RegularVariant: GrantedEffects
-  _: i32
+  BehaviorIndex: i32
   _: i32
   _: i32
   _: bool
