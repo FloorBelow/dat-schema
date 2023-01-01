@@ -1690,12 +1690,12 @@ type GenericLeagueRewardTypeVisuals {
 type GeometryAttack {
   Id: i32
   MiscAnimated: [MiscAnimated]
-  _: [rid]
-  _: i32
+  MiscAnimatedOnHit: [MiscAnimated]
+  Time: i32
   MonsterSkillsShape: i32
   _: i32
-  _: i32
-  _: i32
+  LengthOrRadius: i32
+  Width: i32
   _: bool
   _: i32
   _: i32
@@ -1706,18 +1706,18 @@ type GeometryAttack {
   _: i32
   _: i32
   _: i32
-  _: i32
-  _: i32
-  _: i32
-  _: bool
-  _: bool
+  OrientationToEffectMaybe: i32
   _: i32
   _: i32
   _: bool
+  _: bool
+  AngleMaybe: i32
   _: i32
   _: bool
-  _: rid
-  _: [i32]
+  WaveIntervalMaybe: i32
+  _: bool
+  BuffToApply: BuffDefinitions
+  BuffStatValues: [i32]
   MonsterSkillsWaveDirection: i32
   _: bool
   _: bool
@@ -1726,27 +1726,33 @@ type GeometryAttack {
   _: [i32]
   _: bool
   _: bool
-  _: rid
+  GeometryChannel: GeometryChannel
   _: bool
   _: bool
-  _: [_]
+  _: [i32]
   _: bool
   _: bool
   _: bool
   _: bool
+  _: i32
+  _: bool
+  _: bool
+  _: i32
+  _: i32
+  _: i32
 }
 
 type GeometryChannel {
-  Id: string @unique
-  _: rid
-  _: rid
-  _: rid
+  Id: string
+  Animation: Animation
+  AnimationEnd: Animation
+  MiscAnimated: MiscAnimated
   _: string
   _: string
   _: string
   _: bool
   _: bool
-  _: rid
+  MiscAnimatedChannel: MiscAnimated
   _: rid
   EPKFile: string @file(ext: ".epk")
   _: i32
