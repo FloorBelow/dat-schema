@@ -5180,9 +5180,9 @@ type WorldAreas {
   _: i32
   _: i32
   LoadingScreen_DDSFile: string @file(ext: ".dds")
-  _: rid
-  _: [rid]
-  _: i32
+  VisitQuestFlag: QuestFlags
+  UnlockQuestFlags: [QuestFlags]
+  MaxPlayers: i32
   TopologiesKeys: [Topologies]
   ParentTown_WorldAreasKey: WorldAreas
   _: i32
@@ -5224,7 +5224,7 @@ type WorldAreas {
   _: i32
   EnvironmentsKey: Environments
   _: i32
-  _: rid
+  TerrainPlugin: TerrainPlugins
   _: i32
   _: i32
   _: i32
@@ -5236,10 +5236,10 @@ type WorldAreas {
   _: i32
   _: i32
   _: [_]
-  _: rid
+  WorldAreaLeagueChances: WorldAreaLeagueChances
   _: i32
-  _: rid
-  _: rid
+  WorldAreaLeagueChancesHardMode: WorldAreaLeagueChances
+  HardModeExtraContentChances: HardModeExtraContentChances
 }
 
 type WorldAreaLeagueChances {
