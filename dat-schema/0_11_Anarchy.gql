@@ -1,6 +1,6 @@
 
 type RogueExiles {
   MonsterVarietiesKey: MonsterVarieties
-  _: bool
-  _: rid
+  NaturalSpawn: bool
+  Pet: Pet
 }
