@@ -2009,6 +2009,15 @@ type GroundEffectTypes {
   _: rid
 }
 
+type HardModeExtraContentChances {
+  Id: string
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: [i32]
+}
+
 type HarvestStorageLayout {
   Id: string @unique
   _: rid
