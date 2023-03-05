@@ -534,7 +534,7 @@ type AwardDisplay {
   _: string
   ForegroundImage: string
   OGGFile: string @file(ext: ".ogg")
-  _: i32
+  _: rid
   _: i32
 }
 
@@ -770,7 +770,7 @@ enum BuffVisualSets @indexing(first: 0) { _ }
 
 type CharacterAudioEvents {
   Id: string @unique
-  QuestState: i32
+  Event: QuestFlags
   _: i32
   _: i32
   Marauder_CharacterTextAudioKeys: [CharacterTextAudio]
@@ -971,6 +971,9 @@ type Chests {
   _: rid
   _: bool
   _: bool
+  _: [rid]
+  IsHardmode: bool
+  StatsHardmode: [Stats]
 }
 
 type ClientStrings {
@@ -1156,6 +1159,8 @@ type CurrencyItems {
   _: i32
   _: [i32]
   ShopTag: ShopTag
+  IsHardmode: bool
+  DescriptionHardmode: string
 }
 
 type CurrencyStashTabLayout {
@@ -1571,10 +1576,11 @@ type FixedHideoutDoodadTypes {
 }
 
 type FixedMissions {
+  _: QuestAchievements
+  _: rid
+  _: [i32]
   _: rid
   _: rid
-  _: [_]
-  _: i32
   _: i32
   _: i32
   _: i32
@@ -1637,6 +1643,11 @@ type GameConstants {
   Id: string @unique
   Value: i32
   _: i32
+}
+
+type GameObjectTasks {
+  Id: string
+  HASH16: i32
 }
 
 type GamepadButton {
@@ -2080,16 +2091,16 @@ type HideoutRarity {
 
 type Hideouts {
   Id: string @unique
-  SmallWorldAreasKey: WorldAreas
+  HideoutArea: WorldAreas
   HASH16: i32
   HideoutFile: string @file(ext: ".hideout")
-  _: [rid]
-  LargeWorldAreasKey: WorldAreas
+  SpawnAreas: [WorldAreas]
+  ClaimSideArea: WorldAreas
   HideoutImage: string
   IsEnabled: bool
   Weight: i32
-  _: HideoutRarity
-  _: bool
+  Rarity: HideoutRarity
+  NotActsArea: bool
   Name: string
   _: [i32]
   _: bool
@@ -2422,6 +2433,9 @@ type LeagueStaticRewards {
   _: i32
   _: rid
   _: rid
+  _: i32
+  _: i32
+  _: bool
 }
 
 enum LeagueTrophy @indexing(first: 0) { _ }
@@ -2587,6 +2601,8 @@ type MapSeriesTiers {
   ScourgeTier: i32
   ArchnemesisTier: i32
   SentinelTier: i32
+  KalandraTier: i32
+  SanctumTier: i32
 }
 
 enum MapStashTabLayout @indexing(first: 0) { _ }
@@ -3175,6 +3191,7 @@ type MonsterHeightBrackets {
   _: f32
   Tag: Tags
   _: i32
+  _: f32
 }
 
 type MonsterHeights {
@@ -3484,6 +3501,7 @@ type MonsterVarieties {
   AddonFiles: [string]
   _: i32
   _: i32
+  _: i32
 }
 
 type MonsterVarietiesArtVariations {
@@ -3574,6 +3592,8 @@ type Music {
   Name: string
   _: string
   MusicCategories: [MusicCategories]
+  _: bool
+  _: i32
 }
 
 type MusicCategories {
@@ -3676,14 +3696,14 @@ type NPCFollowerVariations {
   _: i32
   _: i32
   _: i32
+  _: bool
+  _: bool
+  _: [_]
+  _: [_]
   _: i32
   _: bool
   _: bool
-  _: [i32]
-  _: [i32]
   _: i32
-  _: bool
-  _: bool
 }
 
 type NPCMaster {
@@ -3760,7 +3780,7 @@ type NPCTalk {
   _: rid
   _: NPCTalkCategory
   QuestKey: Quest
-  _: i32
+  QuestFlag: QuestFlags
   NPCTextAudioKeys: [NPCTextAudio]
   Script2: string
   _: bool
@@ -4154,6 +4174,7 @@ type QuestItems {
   _: i32
   _: rid
   Script: string
+  _: rid
 }
 
 type QuestRewardOffers {
@@ -4214,13 +4235,16 @@ type QuestStates {
 }
 
 type QuestStaticRewards {
-  _: rid
+  QuestFlag: QuestFlags
   _: i32
   StatsKeys: [Stats]
   StatValues: [i32]
   QuestKey: Quest
   _: i32
   ClientStringsKey: ClientStrings
+  _: i32
+  StatValuesHardmode: [i32]
+  ClientStringHardmode: ClientStrings
   _: i32
 }
 
@@ -4637,6 +4661,11 @@ enum StatInterpolationTypes @indexing(first: 1) {
   EXPONENTIAL
 }
 
+type StatsAffectingGeneration {
+  Stat: Stats
+  StatValue: i32
+}
+
 type Stats {
   Id: string @unique
   _: bool
@@ -4941,6 +4970,11 @@ type TradeMarketCategoryGroups {
 type TradeMarketCategoryListAllClass {
   TradeCategory: TradeMarketCategory
   ItemClass: ItemClasses
+}
+
+type TradeMarketIndexItemAs {
+  Item: rid
+  IndexAs: rid
 }
 
 enum TradeMarketCategoryStyleFlag @indexing(first: 0) { _ }
@@ -5294,6 +5328,11 @@ type WorldPopupIconTypes {
   _: string
   _: i32
   _: i32
+  _: bool
+  _: f32
+  _: f32
+  _: f32
+  _: string
 }
 
 type ZanaLevels {

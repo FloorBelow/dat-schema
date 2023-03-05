@@ -3,3 +3,8 @@ type RogueExiles {
   NaturalSpawn: bool
   Pet: Pet
 }
+
+type RogueExileLifeScalingPerLevel {
+  Level: i32
+  AdditionalLife: i32
+}
