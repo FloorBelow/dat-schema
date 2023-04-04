@@ -4885,14 +4885,14 @@ type TableMonsterSpawners {
   _: i32
   _: i32
   _: i32
-  _: rid
+  Rarity: Rarity
   _: bool
   _: bool
   Script1: string
   _: bool
   _: bool
   Script2: string
-  _: [i32]
+  SpawnWeights: [i32]
   _: i32
   _: i32
   _: i32
