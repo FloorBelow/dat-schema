@@ -45,6 +45,7 @@ export interface TableColumn {
 export interface SchemaTable {
   name: string;
   columns: TableColumn[];
+  tags: string[];
 }
 
 export interface SchemaEnumeration {
@@ -53,9 +54,19 @@ export interface SchemaEnumeration {
   enumerators: Array<string | null>;
 }
 
-export interface SchemaFile {
+export interface SchemaMetadata {
   version: number;
   createdAt: number;
+}
+
+// exported as "schema.min.json"
+export interface SchemaFile extends SchemaMetadata {
   tables: SchemaTable[];
   enumerations: SchemaEnumeration[];
 }
+
+// exported as "schema.jsonl"
+export type SchemaLine =
+  | SchemaMetadata
+  | SchemaTable
+  | SchemaEnumeration;

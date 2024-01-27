@@ -1,4 +1,4 @@
-type Incubators {
+type Incubators @tags(list: ["item:def"]) {
   BaseItemTypesKey: BaseItemTypes @unique
   _: i32
   Description: string
@@ -20,6 +20,9 @@ type LegionBalancePerLevel {
   _: i32
   _: i32
   _: i32
+  _: f32
+  _: i32
+  _: i32
 }
 
 type LegionChestTypes {
@@ -38,14 +41,6 @@ type LegionChestCounts {
   _: i32
   _: i32
   MinLevel: i32
-  _: i32
-}
-
-type LegionChests {
-  ChestsKey: Chests
-  LegionFactionsKey: LegionFactions
-  LegionRanksKey: LegionRanks
-  MonsterVarietiesKey: MonsterVarieties
   _: i32
 }
 
@@ -110,6 +105,7 @@ type LegionRanks {
   _: i32
   _: i32
   LegionBalancePerLevelKey: LegionBalancePerLevel
+  _: i32
   _: i32
   _: i32
 }

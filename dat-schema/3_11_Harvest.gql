@@ -5,16 +5,16 @@ type HarvestCraftOptionIcons {
   DDSFile: string @file(ext: ".dds")
 }
 
-type HarvestCraftOptions {
+type HarvestCraftOptions @tags(list: ["crafting"]) {
   Id: string @unique
   Text: string
-  _: rid
+  Tier: HarvestCraftTiers
   Command: string
   Parameters: string
-  _: [_]
-  _: i32
+  _: [string]
+  HASH16: i32
   Description: string
-  _: bool
+  IsEnchant: bool
   LifeforceType: i32
   LifeforceCost: i32
   SacredCost: i32
@@ -35,32 +35,10 @@ type HarvestCraftFilters {
   Name: string
 }
 
-type HarvestDurability {
-  HarvestObjectsKey: HarvestObjects @unique
-  Durability: i32
-}
-
-type HarvestEncounterScaling {
-  Level: i32
-  Multiplier: f32
-  StatsKeys: [Stats]
-  StatsValues: [i32]
-}
-
 type HarvestInfrastructure {
   Object: string
   _: i32
   ClientStringsKey: ClientStrings
-}
-
-enum HarvestInfrastructureCategories @indexing(first: 0) { _ }
-
-enum HarvestMetaCraftingOptions @indexing(first: 0) { _ }
-
-type HarvestObjects {
-  BaseItemTypesKey: BaseItemTypes @unique
-  AOFile: string @file(ext: ".ao")
-  ObjectType: i32
 }
 
 type HarvestPerLevelValues {
@@ -73,18 +51,9 @@ type HarvestPerLevelValues {
   _: i32
   _: i32
   _: i32
-}
-
-enum HarvestPlantBoosterFamilies @indexing(first: 0) { _ }
-
-type HarvestPlantBoosters {
-  HarvestObjectsKey: HarvestObjects @unique
-  Radius: i32
-  _: rid
-  Lifeforce: i32
-  AdditionalCraftingOptionsChance: i32
-  RareExtraChances: i32
-  HarvestPlantBoosterFamilies: i32
+  _: i32
+  _: i32
+  _: i32
 }
 
 type HarvestLifeScalingPerLevel {
@@ -105,41 +74,8 @@ type HarvestSeeds {
   SeedType: i32
 }
 
-type HarvestSeedItems {
+type HarvestSeedItems @tags(list: ["item:def"]) {
   Id: i32
   BaseItem: BaseItemTypes
   DropStat: Stats
-}
-
-type HarvestSeedTypes {
-  HarvestObjectsKey: HarvestObjects @unique
-  _: rid
-  GrowthCycles: i32
-  AOFiles: [string] @file(ext: ".ao")
-  _: [i32]
-  _: i32
-  Tier: i32
-  RequiredNearbySeed_Tier: i32
-  RequiredNearbySeed_Amount: i32
-  WildLifeforceConsumedPercentage: i32
-  VividLifeforceConsumedPercentage: i32
-  PrimalLifeforceConsumedPercentage: i32
-  Text: string
-  HarvestCraftOptionsKeys: [HarvestCraftOptions]
-  _: i32
-  _: [i32]
-  AchievementItemsKeys: [AchievementItems]
-  OutcomeType: i32
-}
-
-type HarvestSpecialCraftCosts {
-  _: rid
-  _: i32
-  _: i32
-}
-
-type HarvestSpecialCraftOptions {
-  _: rid
-  _: i32
-  _: rid
 }

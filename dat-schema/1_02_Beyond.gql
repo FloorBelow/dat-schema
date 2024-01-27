@@ -1,11 +1,5 @@
-
-type BeyondDemons {
-  MonsterVarietiesKey: MonsterVarieties
-  _: bool
-  _: bool
-}
-
 type BeyondFactions {
   Id: string
-  Boss: MonsterVarieties # from Scourge league
+  Boss: MonsterVarieties
+  _: rid
 }

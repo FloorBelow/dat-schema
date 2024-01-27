@@ -101,11 +101,12 @@ type BetrayalTargets {
   ScriptArgument: string
 }
 
-type BetrayalTraitorRewards {
+type BetrayalTraitorRewards @tags(list: ["item:droptable"]) {
   BetrayalJobsKey: BetrayalJobs
   BetrayalTargetsKey: BetrayalTargets
   BetrayalRanksKey: BetrayalRanks
   Description: string
+  Description2: string
 }
 
 type BetrayalUpgrades {
@@ -130,22 +131,25 @@ type BetrayalWallLifeScalingPerLevel {
   MoreLife: i32
 }
 
-type SafehouseBYOCrafting {
+type SafehouseBYOCrafting @tags(list: ["crafting"]) {
   BetrayalJobsKey: BetrayalJobs
   BetrayalTargetsKey: BetrayalTargets
   Rank: i32
   Description: string
   ServerCommand: string
   _: [rid]
+  Description2: string
+  ServerCommand2: string
 }
 
-type SafehouseCraftingSpree {
-  BetrayalJobsKey: BetrayalJobs
-  Rank: i32
+type SafehouseCraftingSpreeType {
+  Id: string
+  Currencies: [SafehouseCraftingSpreeCurrencies]
   CurrencyCount: [i32]
-  Chance: i32
-  Currency_SafehouseCraftingSpreeCurrenciesKeys: [SafehouseCraftingSpreeCurrencies]
   _: [rid]
+  Disabled: bool
+  ItemClassText: string
+  _: i32
 }
 
 type SafehouseCraftingSpreeCurrencies {
@@ -160,4 +164,21 @@ type Scarabs {
   BaseItemTypesKey: BaseItemTypes
 }
 
-enum ScarabTypes @indexing(first: 0) { _ }
+enum ScarabTypes @indexing(first: 0) {
+  BESTIARY
+  BREACH
+  CARTOGRAPHY
+  RELIQUARY
+  SHAPER
+  ELDER
+  DIVINATION
+  TORMENT
+  AMBUSH
+  HARBINGER
+  EXPEDITION
+  LEGION
+  METAMORPH
+  SULPHITE
+  BLIGHT
+  ABYSS
+}
