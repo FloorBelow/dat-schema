@@ -1748,6 +1748,9 @@ type GeometryAttack {
   _: i32
   _: i32
   _: i32
+  _: bool
+  _: rid
+  _: rid
 }
 
 type GeometryChannel {
@@ -5248,7 +5251,7 @@ type WorldAreas {
   _: i32
   _: i32
   _: i32
-  _: [_] # All rows empty
+  _: [_]
   WorldAreaLeagueChances: WorldAreaLeagueChances
   _: i32
   WorldAreaLeagueChancesHardMode: WorldAreaLeagueChances
@@ -5292,6 +5295,316 @@ type WorldAreaLeagueChances {
   _: i32
 }
 
+type WorldPopupIconTypes {
+  Id: string @unique
+  _: string
+  _: i32
+  _: i32
+  _: bool
+  _: f32
+  _: f32
+  _: f32
+  _: string
+}
+
+# Added 3.21
+type AbyssBossLifeScalingPerLevel {
+  Level: i32
+  Life: i32
+}
+
+# Added 3.23
+type ActionTypes {
+  Id: string @unique
+  _: i32
+  _: bool
+  _: bool
+}
+
+# Added 3.21
+type ActiveSettings {
+  _: string @unique
+  _: i32
+  _: i32
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: i32
+}
+
+# Added 3.23
+type AdditionalMonstersFromMapStats {
+  _: rid
+  _: [_]
+  _: bool
+  _: i32
+  _: i32
+}
+
+# Added 3.19
+type AlternateTreeArt {
+  _: rid @unique
+  Circle1: string
+  Circle2: string
+  Glow: string
+}
+
+# Added 3.21
+type AnimateWeaponUniques {
+  Id: string @unique
+  ItemVisualIdentity: ItemVisualIdentity
+  ItemClass: ItemClasses
+  _: i32
+}
+
+# Added 3.19
+type AtlasMemoryLine {
+  League: string
+  League2: string
+  StartPointArt: string
+  MidPointArt: string
+  EndPointArt: string
+  PathArt: string
+}
+
+# Added 3.17
+type BattlePasses {
+  Id: string @unique
+  LeagueCategory: LeagueCategory
+  International_BK2File: string
+  China_BK2File: string
+  MapCompletionCount: i32
+  _: bool
+  Id2: string @unique
+}
+
+# Added 3.17
+type BattlePassRewards {
+  BattlePass: BattlePasses
+  RewardTier: i32
+  _: i32
+  _: i32
+  _: bool
+  Id: string
+  RewardedMTX: [BaseItemTypes]
+  _: i32
+  RewardDescription: string
+  _: string
+  _: i32
+  _: i32
+  _: bool
+  RewardTitle: string
+  _: rid
+  _: bool
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: bool
+  _: bool
+  _: bool
+}
+
+# Added 3.21
+type BattlePassTracks {
+  Id: string @unique
+  Description: string
+}
+
+# Added 3.20
+type BreachArtVariations {
+  Id: string @unique
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: rid
+  _: [_]
+  _: rid
+}
+
+# Added 3.21
+type Breachstones {
+  BaseType: BaseItemTypes @unique
+  MapTierEquivalent: i32
+  _: i32 @unique
+  UpgradesTo: BaseItemTypes
+  UpgradeCurrency: BaseItemTypes
+}
+
+# Added 3.22
+type ConditionalAchievements {
+  _: rid @unique
+  _: i32
+  _: i32
+}
+
+# Added 3.18
+type CorpseSinkVariations {
+  Id: string @unique
+  AOFile: string @file(ext: ".ao")
+  EPKFile: string @file(ext: ".epk")
+  AOFiles: [string] @file(ext: ".ao")
+  _: i32
+  _: bool
+  _: i32
+  _: i32
+  _: bool
+}
+
+# Added 3.21
+type CosmeticsEquipPanelMode {
+  Id: string @unique
+  _: [_]
+}
+
+# Added 3.21
+type CraftingBenchSpecificOptionId {
+  _: string @unique
+  _: rid
+}
+
+# Added 3.21
+type CurrencyUseEffects {
+  _: rid @unique
+  _: i32
+  BK2File: string @file(ext: ".bk2")
+  SoundFile: string @file(ext: ".ogg")
+  _: bool
+  BK2File2: string @file(ext: ".bk2")
+  _: bool
+  _: rid
+  _: f32
+}
+
+# Added 3.17
+type DamageEffectVariations {
+  Id: string @unique
+  _: [_]
+  _: [string]
+  _: bool
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: i32
+  _: bool
+  _: bool
+  _: bool
+  _: rid
+}
+
+# Added 3.20
+type DamageWhenHitEffects {
+  _: rid @unique
+  _: rid
+  _: bool
+}
+
+# Added 3.20
+type DelveRobotVariations {
+  Id: string @unique
+  AOFile: string @file(ext: ".ao")
+  _: [string]
+  _: rid
+  _: rid
+}
+
+# Added 3.22
+type DivinationWindowVisuals {
+  Id: string @unique
+  WindowArt: string
+  ButtonArt: string
+}
+
+# Added 3.22
+type EntityInfobarStyle {
+  Id: string @unique
+  FrameLeft: string
+  FrameMiddle: string
+  FrameRepeat: string
+  FrameRight: string
+  EntityLeft: string
+  EntityMiddle: string
+  EntityRepeat: string
+  EntityRight: string
+  EntityStats: string
+  EntityStatsSmall: string
+  _: i32
+  _: i32
+  LifeBar: string
+  LifeBarLeft: string
+  LifeBarMiddle: string
+  LifeBarRepeat: string
+  LifeBarRight: string
+}
+
+# Added 3.17
+type FlaskStashBaseTypeOrdering {
+  Flask: Flasks @unique
+  Order: i32 @unique
+}
+
+# Added 3.20
+type GameObjectTasksFromStats {
+  _: rid @unique
+  _: rid
+  _: bool
+  _: i32
+  _: bool
+  _: bool
+  _: bool
+}
+
+# Added 3.17
+type GamepadButtonCombination {
+  Id: string @unique
+  Button1: GamepadButton
+  Button2: GamepadButton
+  _: i32
+}
+
+# Added 3.17
+type GamepadThumbstick {
+  _: string @unique
+  _: string @unique
+}
+
+# Added 3.23
+type GemEffects {
+  Id: string @unique
+  Name: string
+  GrantedEffect: GrantedEffects
+  GrantedEffectHardmode: GrantedEffects
+  GrantedEffect2: GrantedEffects
+  GrantedEffect2Hardmode: GrantedEffects
+  SupportText: string
+  SupportName: string
+  GemTags: [GemTags]
+  Consumed_ModsKey: Mods
+  "Used by gem icon shader https://gist.github.com/zao/08878df57aba605e5fa1e6373f2dce02"
+  ItemColor: i32
+}
+
+# Added 3.20
+type GoldActScaling {
+  Act: string @unique
+  _: i32
+  _: i32
+  _: i32
+}
+
 # Added 3.20
 type GoldConstants {
   Id: string @unique
@@ -5316,10 +5629,61 @@ type HardModeExtraContentChances {
 type HardModeExtraContentChancesPerMapTier {
   _: rid @unique
   _: i32
+}
+
+# Added 3.19
+type HarvestCraftCostScalingByBasetype {
+  _: rid
+  _: rid
   _: i32
 }
 
-type WorldPopupIconTypes {
+# Added 3.20
+type HideoutCraftingBenchDoodads {
+  _: rid @unique
+  _: rid
+}
+
+# Added 3.20
+type HideoutCraftingBenchInterfaceVisuals {
+  Id: string @unique
+  _: string
+  _: string
+  _: string
+  _: string
+  _: string
+}
+
+# Added 3.20
+type HideoutStashDoodads {
+  _: rid @unique
+  _: bool
+  _: bool
+  _: bool
+}
+
+# Added 3.19
+type HideoutWaypointDoodads {
+  _: rid @unique
+  _: [_]
+}
+
+# Added 3.21
+type HudEnergyShieldVisuals {
+  Id: string @unique
+  _: string
+  _: string
+  _: string
+  _: string
+  _: string
+  _: string
+  _: string
+  _: string
+  _: bool
+}
+
+# Added 3.21
+type HudLifeVisuals {
   Id: string @unique
   _: string
   _: string
