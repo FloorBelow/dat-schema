@@ -3397,16 +3397,16 @@ type MonsterSpawnerOverrides {
 
 type MonsterTypes {
   Id: string @unique
-  _: i32
+  Accuracy: i32
   IsSummoned: bool
   Armour: i32
   Evasion: i32
   EnergyShieldFromLife: i32
   DamageSpread: i32
   MonsterResistancesKey: MonsterResistances
-  IsLargeAbyssMonster: bool
-  IsSmallAbyssMonster: bool
-  _: bool
+  AltLife1: bool
+  AltLife2: bool
+  BaseDamageIgnoresAttackSpeed: bool
 }
 
 type MonsterVarieties {
