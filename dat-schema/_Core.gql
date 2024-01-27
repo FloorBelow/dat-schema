@@ -61,7 +61,7 @@ type ActiveSkills {
   Id: string @unique
   DisplayedName: string
   Description: string
-  AISName: string
+  ActionType: ActionTypes
   Icon_DDSFile: string @file(ext: ".dds")
   ActiveSkillTargetTypes: [ActiveSkillTargetTypes]
   ActiveSkillTypes: [ActiveSkillType]
@@ -1353,7 +1353,7 @@ type EclipseMods {
 type EffectDrivenSkill {
   _: i32
   MiscAnimated: [MiscAnimated]
-  _: [_]
+  _: [_] # All rows empty
   _: i32
   _: i32
   _: bool
@@ -1959,7 +1959,7 @@ type GrantedEffectStatSetsPerLevel {
   FloatStats: [Stats]
   InterpolationBases: [Stats]
   AdditionalStats: [Stats]
-  StatInterpolations: [i32]
+  StatInterpolations: [StatInterpolationTypes]
   FloatStatsValues: [f32]
 }
 
@@ -1998,22 +1998,6 @@ type GroundEffectTypes {
   _: rid
   _: rid
   _: rid
-}
-
-type HarvestStorageLayout {
-  Id: string @unique
-  _: rid
-  _: i32
-  _: i32
-  _: i32
-  _: i32
-  _: i32
-  _: i32
-  _: i32
-  _: i32
-  Button: string
-  ButtonHighlight: string
-  HasButton: bool
 }
 
 type HeistStorageLayout {
@@ -3560,10 +3544,13 @@ type MonsterVarieties {
   _: i32
   _: i32
   _: i32
-  AddonFiles: [string]
+  AddonMonsterTypeIndex: [string] @files(ext: [".ot", ".otc"])
   _: i32
   _: i32
   _: i32
+  _: i32
+  _: i32
+  _: bool
 }
 
 type MonsterVarietiesArtVariations {
@@ -5261,11 +5248,13 @@ type WorldAreas {
   _: i32
   _: i32
   _: i32
-  _: [_]
+  _: [_] # All rows empty
   WorldAreaLeagueChances: WorldAreaLeagueChances
   _: i32
   WorldAreaLeagueChancesHardMode: WorldAreaLeagueChances
   HardModeExtraContentChances: HardModeExtraContentChances
+  _: Rulesets
+  _: i32
 }
 
 type WorldAreaLeagueChances {
@@ -5283,7 +5272,6 @@ type WorldAreaLeagueChances {
   _: i32
   _: i32
   _: i32
-  _: [i32]
   _: i32
   _: i32
   _: i32
